@@ -1,0 +1,63 @@
+{
+  "name": "gulp-starting-setup",
+  "version": "1.0.0",
+  "description": "Gulp starting setting-up for front end. Pug, SASS, ES6 modules bundling, SVG sprites, etc.",
+  "main": "index.js",
+  "scripts": {
+    "start": "gulp",
+    "build": "gulp build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kochhh/gulp-starting-setup.git"
+  },
+  "keywords": [],
+  "author": "Konstantin Kochurov (himamma@gmail.com)",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.3.4",
+    "@babel/plugin-external-helpers": "^7.2.0",
+    "@babel/preset-env": "^7.3.4",
+    "@babel/register": "^7.0.0",
+    "autoprefixer": "^9.4.10",
+    "browser-sync": "^2.26.3",
+    "cssnano": "^4.1.10",
+    "del": "^4.0.0",
+    "gulp": "^4.0.0",
+    "gulp-babel": "^8.0.0",
+    "gulp-better-rollup": "^4.0.1",
+    "gulp-cheerio": "^0.6.3",
+    "gulp-concat": "^2.6.1",
+    "gulp-group-css-media-queries": "^1.2.2",
+    "gulp-imagemin": "^5.0.3",
+    "gulp-notify": "^3.2.0",
+    "gulp-plumber": "^1.2.1",
+    "gulp-postcss": "^8.0.0",
+    "gulp-pug": "^4.0.1",
+    "gulp-rename": "^1.4.0",
+    "gulp-replace": "^1.0.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-svg-sprite": "^1.5.0",
+    "gulp-svgmin": "^2.1.0",
+    "gulp-uglify": "^3.0.2",
+    "gulp-wait": "0.0.2",
+    "rollup": "^1.6.0",
+    "rollup-plugin-babel": "^4.3.2",
+    "rollup-plugin-commonjs": "^9.2.1",
+    "rollup-plugin-node-resolve": "^4.0.1",
+    "rollup-plugin-terser": "^4.0.4"
+  },
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "jquery": "^3.3.1",
+    "owl.carousel": "^2.3.4",
+    "popper.js": "^1.14.7",
+    "svg4everybody": "^2.1.9"
+  },
+  "browserslist": [
+    ">0.25%",
+    "not op_mini all"
+  ]
+}

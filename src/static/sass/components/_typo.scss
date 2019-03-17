@@ -1,0 +1,7 @@
+a {
+  @include transition($transition-base);
+
+  &:focus {
+    transition: none;
+  }
+}
