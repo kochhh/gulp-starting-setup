@@ -2,3 +2,21 @@ body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
 }
+
+.layout-grid {
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: -1;
+
+  [class*="col-"] {
+    background-color: rgba($black, 0.1%);
+    height: 100vh;
+
+    &:nth-of-type(2n) {
+      background-color: rgba($black, 0.05%);
+    }
+  }
+}

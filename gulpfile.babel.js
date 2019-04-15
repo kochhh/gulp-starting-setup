@@ -246,7 +246,7 @@ export function svg() {
         }
       }
     }))
-    .pipe(dest(`${build.img}/`))
+    .pipe(dest(`${build.img}/icons/`))
 }
 
 export function fonts() {
@@ -259,8 +259,8 @@ export function watchFiles() {
   watch(`${source.pug}/**/*.pug`, series('html'))
   watch(`${source.css}/**/*.scss`, series('stylesDev'))
   watch(`${source.js}/**/*.js`, series('jsDev'))
-  watch(`${source.img}/**/*.{png,jpg,gif,webp}`, series('imgDev'))
-  watch(`${source.img}/svg/*.svg`, series('svg'))
+  watch(`${source.img}/**/*.{png,jpg,webp}`, series('imgDev'))
+  watch(`${source.img}/svg-icons/*.svg`, series('svg'))
 }
 
 const taskDev = series(

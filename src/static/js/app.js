@@ -1,9 +1,5 @@
-import hello from './test/test'
+// can do ES6 imports here
 
-$(document).ready(() => {
-  console.log(hello('World'))
-
-  $('body')
-    .animate({opacity: 0}, 500)
-    .animate({opacity: 1.0}, 500)
+$(() => {
+  console.log('hello world')
 })

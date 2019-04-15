@@ -20,6 +20,13 @@ body(class=pageClass)
       .container
         block content
     include ../modules/footer
+  .layout-grid
+    .container
+      .row.no-gutters
+        - var n = 0
+        while n < 12
+          - n++
+          .col-1
   script(src="static/js/libs.min.js")
   script(src="static/js/main.js")
 |
