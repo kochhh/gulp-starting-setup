@@ -40,3 +40,11 @@
 @mixin relative($top: null, $right: null, $bottom: null, $left: null) {
   @include position(relative, $top, $right, $bottom, $left);
 }
+
+@mixin line-clamp($lines, $line-height: $line-height-base) {
+  -webkit-line-clamp: $lines;
+
+  @supports not (-webkit-line-clamp: 1) {
+    max-height: $lines * $line-height * 1em;
+  }
+}

@@ -10,16 +10,16 @@ head
   meta(http-equiv="X-UA-Compatible", content="IE=edge")
   title= title
   meta(name="viewport" content="width=device-width, initial-scale=1")
-  meta(name="description" content="")
+  meta(name="description" content="Some description")
   link(href="static/css/main.css" rel="stylesheet")
   script(src="static/js/vendor/modernizr-custom.js")
 body(class=pageClass)
-  .wrapper
-    include ../modules/header
-    main.main
-      .container
-        block content
-    include ../modules/footer
+  include ../modules/header
+  main.main
+    .container
+      block content
+  include ../modules/footer
+  include ../modules/modal
   .layout-grid
     .container
       .row.no-gutters

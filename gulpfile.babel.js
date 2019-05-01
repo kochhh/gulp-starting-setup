@@ -18,6 +18,7 @@ import sass from 'gulp-sass'
 import sourcemaps from 'gulp-sourcemaps'
 import postcss from 'gulp-postcss'
 import autoprefixer from 'autoprefixer'
+import cssimport from 'postcss-import'
 import cssnano from 'cssnano'
 import gcmq from 'gulp-group-css-media-queries'
 
@@ -29,7 +30,7 @@ import nodeResolve from 'rollup-plugin-node-resolve'
 import commonjs from 'rollup-plugin-commonjs'
 
 // img
-import imagemin from 'gulp-imagemin'
+// import imagemin from 'gulp-imagemin'
 import svgmin from 'gulp-svgmin'
 import cheerio from 'gulp-cheerio'
 import svgSprite from 'gulp-svg-sprite'
@@ -73,7 +74,7 @@ export function serverInit() {
     logLevel: 'info',
     logConnections: false,
     logFileChanges: true,
-    open: true,
+    open: false,
     ui: false,
     notify: false,
     ghostMode: false,
@@ -96,13 +97,14 @@ export function stylesDev() {
     .pipe(sourcemaps.init())
     .pipe(sass({
       outputStyle: 'expanded',
-      precision: 5
+      precision: 4
     }))
     .pipe(sourcemaps.write())
     .pipe(postcss([
+      cssimport(),
       autoprefixer()
     ]))
-    .pipe(rename('main.css'))
+    .pipe(rename({ basename: 'main' }))
     .pipe(dest(`${build.css}/`))
     .pipe(Server.stream())
 }
@@ -116,15 +118,16 @@ export function stylesBuild() {
       precision: 4
     }))
     .pipe(postcss([
+      cssimport(),
       autoprefixer()
     ]))
     .pipe(gcmq())
-    .pipe(rename('main.css'))
+    .pipe(rename({ basename: 'main' }))
     .pipe(dest(`${build.css}/`))
     .pipe(postcss([
       cssnano()
     ]))
-    .pipe(rename('main.min.css'))
+    .pipe(rename({ suffix: '.min' }))
     .pipe(dest(`${build.css}/`))
 }
 
@@ -153,7 +156,7 @@ export function jsLibs() {
       }
     }, 'iife'))
     .pipe(uglify())
-    .pipe(rename('libs.min.js'))
+    .pipe(rename({ suffix: '.min' }))
     .pipe(dest(`${build.js}/`))
     .pipe(Server.stream())
 }
@@ -172,7 +175,7 @@ export function jsDev() {
       }
     }, 'iife'))
     .pipe(sourcemaps.write(''))
-    .pipe(rename('main.js'))
+    .pipe(rename({ basename: 'main' }))
     .pipe(dest(`${build.js}/`))
     .pipe(Server.stream())
 }
@@ -189,10 +192,10 @@ export function jsBuild() {
         (warn.code !== 'THIS_IS_UNDEFINED') && next(warn)
       }
     }, 'iife'))
-    .pipe(rename('main.js'))
+    .pipe(rename({ basename: 'main' }))
     .pipe(dest(`${build.js}/`))
     .pipe(uglify())
-    .pipe(rename('main.min.js'))
+    .pipe(rename({ suffix: '.min' }))
     .pipe(dest(`${build.js}/`))
 }
 
