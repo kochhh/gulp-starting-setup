@@ -42,9 +42,10 @@
 }
 
 @mixin line-clamp($lines, $line-height: $line-height-base) {
-  -webkit-line-clamp: $lines;
+  max-height: $lines * $line-height * 1em;
 
-  @supports not (-webkit-line-clamp: 1) {
-    max-height: $lines * $line-height * 1em;
+  @supports (-webkit-line-clamp: 1) or (line-clamp: 1) {
+    -webkit-line-clamp: $lines;
+    max-height: none;
   }
 }
