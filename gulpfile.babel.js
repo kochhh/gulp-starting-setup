@@ -23,7 +23,7 @@ import cssnano from 'cssnano'
 import gcmq from 'gulp-group-css-media-queries'
 
 // js
-import uglify from 'gulp-uglify'
+import terser from 'gulp-terser'
 import rollup from 'gulp-better-rollup'
 import babel from 'rollup-plugin-babel'
 import nodeResolve from 'rollup-plugin-node-resolve'
@@ -154,8 +154,8 @@ export function jsLibs() {
         // Suppress jquery this undefined msg
         (warn.code !== 'THIS_IS_UNDEFINED') && next(warn)
       }
-    }, 'iife'))
-    .pipe(uglify())
+    }, 'cjs'))
+    .pipe(terser())
     .pipe(rename({ suffix: '.min' }))
     .pipe(dest(`${build.js}/`))
     .pipe(Server.stream())
@@ -194,7 +194,7 @@ export function jsBuild() {
     }, 'iife'))
     .pipe(rename({ basename: 'main' }))
     .pipe(dest(`${build.js}/`))
-    .pipe(uglify())
+    .pipe(terser())
     .pipe(rename({ suffix: '.min' }))
     .pipe(dest(`${build.js}/`))
 }

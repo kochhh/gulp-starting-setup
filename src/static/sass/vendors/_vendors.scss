@@ -1,2 +1,5 @@
-// Owl Carousel
-@import "owl.carousel/owl.carousel";
+// Swiper
+@import '../../../../node_modules/swiper/src/scss/functions';
+@import '../../../../node_modules/swiper/src/components/core/core';
+@import '../../../../node_modules/swiper/src/components/lazy/lazy';
+@import '../../../../node_modules/swiper/src/components/a11y/a11y';
