@@ -41,13 +41,13 @@
     "gulp-sourcemaps": "^2.6.5",
     "gulp-svg-sprite": "^1.5.0",
     "gulp-svgmin": "^2.2.0",
-    "gulp-terser": "^1.1.7",
+    "gulp-terser": "^1.2.0",
     "gulp-wait": "0.0.2",
     "postcss-import": "^12.0.1",
-    "rollup": "^1.11.3",
+    "rollup": "^1.12.3",
     "rollup-plugin-babel": "^4.3.2",
-    "rollup-plugin-commonjs": "^9.3.4",
-    "rollup-plugin-node-resolve": "^4.2.4"
+    "rollup-plugin-commonjs": "^10.0.0",
+    "rollup-plugin-node-resolve": "^5.0.0"
   },
   "dependencies": {
     "bootstrap": "^4.3.1",
