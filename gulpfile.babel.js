@@ -28,6 +28,8 @@ import rollup from 'gulp-better-rollup'
 import babel from 'rollup-plugin-babel'
 import nodeResolve from 'rollup-plugin-node-resolve'
 import commonjs from 'rollup-plugin-commonjs'
+import modernizr from 'gulp-modernizr'
+import modernizrConfig from './src/static/js/config/modernizr-config'
 
 // img
 // import imagemin from 'gulp-imagemin'
@@ -131,11 +133,13 @@ export function stylesBuild() {
     .pipe(dest(`${build.css}/`))
 }
 
-export function jsCopy() {
-  return src(`${source.js}/vendor/*.js`)
-    .pipe(plumber({ errorHandler }))
+export function mdrnzr() {
+  return src(`${source.js}/*.js`)
+    // .pipe(plumber({ errorHandler }))
+    .pipe(modernizr('modernizr.min.js', modernizrConfig))
+    .pipe(terser())
     .pipe(dest(`${build.js}/vendor/`))
-    .pipe(Server.stream())
+    // .pipe(Server.stream())
 }
 
 export function jsLibs() {
@@ -262,18 +266,18 @@ export function watchFiles() {
   watch(`${source.pug}/**/*.pug`, series('html'))
   watch(`${source.css}/**/*.scss`, series('stylesDev'))
   watch(`${source.js}/**/*.js`, series('jsDev'))
-  watch(`${source.img}/**/*.{png,jpg,webp}`, series('imgDev'))
+  watch(`${source.img}/**/*.{png,jpg,jpeg,webp}`, series('imgDev'))
   watch(`${source.img}/svg-icons/*.svg`, series('svg'))
 }
 
 const taskDev = series(
   clean,
-  parallel(html, stylesDev, jsCopy, jsLibs, jsDev, imgDev, svgCopy, svg, fonts, serverInit, watchFiles)
+  parallel(html, stylesDev, mdrnzr, jsLibs, jsDev, imgDev, svgCopy, svg, fonts, serverInit, watchFiles)
 )
 
 const taskBuild = series(
   clean,
-  parallel(html, stylesBuild, jsCopy, jsLibs, jsBuild, imgBuild, svgCopy, svg, fonts)
+  parallel(html, stylesBuild, mdrnzr, jsLibs, jsBuild, imgBuild, svgCopy, svg, fonts)
 )
 
 export { taskDev as default, taskBuild as build }
