@@ -16,14 +16,14 @@
   "author": "Konstantin Kochurov (himamma@gmail.com)",
   "license": "ISC",
   "devDependencies": {
-    "@babel/core": "^7.4.5",
+    "@babel/core": "^7.5.4",
     "@babel/plugin-external-helpers": "^7.2.0",
-    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-env": "^7.5.4",
     "@babel/register": "^7.4.4",
-    "autoprefixer": "^9.6.0",
+    "autoprefixer": "^9.6.1",
     "browser-sync": "^2.26.7",
     "cssnano": "^4.1.10",
-    "del": "^4.1.1",
+    "del": "^5.0.0",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
     "gulp-better-rollup": "^4.0.1",
@@ -31,7 +31,7 @@
     "gulp-concat": "^2.6.1",
     "gulp-group-css-media-queries": "^1.2.2",
     "gulp-imagemin": "^6.0.0",
-    "gulp-modernizr": "^3.2.1",
+    "gulp-modernizr": "^3.3.0",
     "gulp-notify": "^3.2.0",
     "gulp-plumber": "^1.2.1",
     "gulp-postcss": "^8.0.0",
@@ -45,10 +45,8 @@
     "gulp-terser": "^1.2.0",
     "gulp-wait": "0.0.2",
     "postcss-import": "^12.0.1",
-    "rollup": "^1.15.4",
-    "rollup-plugin-babel": "^4.3.2",
-    "rollup-plugin-commonjs": "^10.0.0",
-    "rollup-plugin-node-resolve": "^5.0.2"
+    "rollup": "^1.16.7",
+    "rollup-plugin-babel": "^4.3.3"
   },
   "dependencies": {
     "bootstrap": "^4.3.1",
@@ -58,7 +56,7 @@
     "swiper": "^4.5.0"
   },
   "browserslist": [
-    "> 0.5%",
+    "> 1%",
     "not dead",
     "not op_mini all"
   ]

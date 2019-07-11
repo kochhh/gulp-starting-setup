@@ -26,8 +26,7 @@ import gcmq from 'gulp-group-css-media-queries'
 import terser from 'gulp-terser'
 import rollup from 'gulp-better-rollup'
 import babel from 'rollup-plugin-babel'
-import nodeResolve from 'rollup-plugin-node-resolve'
-import commonjs from 'rollup-plugin-commonjs'
+import concat from 'gulp-concat'
 import modernizr from 'gulp-modernizr'
 import modernizrConfig from './src/static/js/config/modernizr-config'
 
@@ -135,30 +134,21 @@ export function stylesBuild() {
 
 export function mdrnzr() {
   return src(`${source.js}/*.js`)
-    // .pipe(plumber({ errorHandler }))
+    .pipe(plumber({ errorHandler }))
     .pipe(modernizr('modernizr.min.js', modernizrConfig))
     .pipe(terser())
     .pipe(dest(`${build.js}/vendor/`))
-    // .pipe(Server.stream())
+    .pipe(Server.stream())
 }
 
 export function jsLibs() {
-  return src(`${source.js}/libs.js`)
+  return src([
+      './node_modules/jquery/dist/jquery.js',
+      './node_modules/svg4everybody/dist/svg4everybody.js',
+      './node_modules/bootstrap/dist/js/bootstrap.bundle.js',
+    ])
     .pipe(plumber({ errorHandler }))
-    .pipe(rollup({
-      plugins: [
-        nodeResolve(),
-        commonjs({
-          namedExports: {
-            'node_modules/jquery/dist/jquery.js': ['jquery']
-          }
-        })
-      ],
-      onwarn: (warn, next) => { 
-        // Suppress jquery this undefined msg
-        (warn.code !== 'THIS_IS_UNDEFINED') && next(warn)
-      }
-    }, 'cjs'))
+    .pipe(concat('libs.js'))
     .pipe(terser())
     .pipe(rename({ suffix: '.min' }))
     .pipe(dest(`${build.js}/`))
