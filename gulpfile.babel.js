@@ -212,13 +212,13 @@ export function imgBuild() {
 }
 
 export function svgCopy() {
-  return src(`${source.img}/*.svg`)
+  return src([`${source.img}/**/*.svg`, `!${source.img}/icons/*.svg`])
     .pipe(plumber({ errorHandler }))
     .pipe(dest(`${build.img}/`))
 }
 
 export function svg() {
-  return src(`${source.img}/svg-icons/*.svg`)
+  return src(`${source.img}/icons/*.svg`)
     .pipe(plumber({ errorHandler }))
     .pipe(svgmin({
       js2svg: {
@@ -257,7 +257,7 @@ export function watchFiles() {
   watch(`${source.css}/**/*.scss`, series('stylesDev'))
   watch(`${source.js}/**/*.js`, series('jsDev'))
   watch(`${source.img}/**/*.{png,jpg,jpeg,webp}`, series('imgDev'))
-  watch(`${source.img}/svg-icons/*.svg`, series('svg'))
+  watch(`${source.img}/icons/*.svg`, series('svg'))
 }
 
 const taskDev = series(

@@ -1,5 +1,11 @@
-// can do ES6 imports here
+import Module from './components/module'
 
-$(() => {
-  console.log('hello world')
-})
+const App = (() => {
+	return {
+		init: () => {
+      Module.init()
+    }
+  }
+})()
+
+App.init()
