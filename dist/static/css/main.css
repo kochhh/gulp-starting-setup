@@ -664,7 +664,8 @@ template {
 }
 
 .swiper-container {
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
   position: relative;
   overflow: hidden;
   list-style: none;
@@ -869,11 +870,10 @@ body {
 .line-clamp {
   display: block;
   display: -webkit-box;
-  /* autoprefixer: ignore next */
-  -webkit-box-orient: vertical;
   overflow: hidden;
   padding: 0;
   position: relative;
+  -webkit-box-orient: vertical;
 }
 
 .line-clamp::after {

@@ -14,11 +14,10 @@
 .line-clamp {
   display: block;
   display: -webkit-box;
-  /* autoprefixer: ignore next */
-  -webkit-box-orient: vertical;
   overflow: hidden;
   padding: 0;
   position: relative;
+  -webkit-box-orient: vertical;
 
   &::after {
     background: linear-gradient(to right, rgba($white, 0), rgba($white, 1) 75%);

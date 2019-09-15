@@ -143,9 +143,9 @@ export function mdrnzr() {
 
 export function jsLibs() {
   return src([
-      './node_modules/jquery/dist/jquery.js',
-      './node_modules/svg4everybody/dist/svg4everybody.js',
-      './node_modules/bootstrap/dist/js/bootstrap.bundle.js',
+      './node_modules/jquery/dist/jquery.min.js',
+      './node_modules/svg4everybody/dist/svg4everybody.min.js',
+      './node_modules/bootstrap/dist/js/bootstrap.bundle.min.js',
     ])
     .pipe(plumber({ errorHandler }))
     .pipe(concat('libs.js'))
